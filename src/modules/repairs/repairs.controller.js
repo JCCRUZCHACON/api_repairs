@@ -1,5 +1,6 @@
 import { RepairService } from './repairs.service.js';
 
+
 const repairService = new RepairService();
 
 export const findAllRepairs = async (req, res, next) => {

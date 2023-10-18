@@ -28,6 +28,6 @@ export class RepairService {
   }
 
   async delete(repair) {
-    return await repair.update({ status: 'canceled' });
+    return await repair.update({ status: 'cancelled' });
   }
 }
