@@ -164,7 +164,7 @@ export const changePassword = catchAsync(async(req, res, next) => {
 export const deleteAccount = catchAsync(async(req, res, next) => {
   const { user } = req;
   
-  await authService.deleteUser(user)
+  await userService.deleteUser(user)
 
   res.status(204).json(null)
 })
