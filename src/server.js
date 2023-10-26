@@ -5,6 +5,7 @@ import { authenticate, syncUp } from './config/database/database.js'
 async function main(){
   try {
     await authenticate()
+    
     await syncUp()
   } catch (error) {
     console.error(error)

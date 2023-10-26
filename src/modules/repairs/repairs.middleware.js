@@ -1,8 +1,9 @@
+import { catchAsync } from '../../errors/catchAsync.js';
 import { RepairService } from './repairs.service.js';
 
 const repairService = new RepairService();
 
-export const validRepair = async (req, res, next) => {
+export const validRepair = catchAsync(async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -20,4 +21,4 @@ export const validRepair = async (req, res, next) => {
   } catch (error) {
     return res.status(500).json(error);
   }
-};
+})

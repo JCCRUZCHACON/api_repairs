@@ -1,4 +1,4 @@
-import { envs } from "../config/enviroments/enviroments.js";
+import { envs } from "../config/enviroments/enviroment.js";
 import { AppError } from "./appError.js";
 import Error from "./error.model.js";
 
@@ -50,8 +50,12 @@ export const globalErrorHandler = (err, req, res, next) => {
 
   if(envs.NODE_ENV === 'production'){
     let error = err;
+ 
     if(err.parent?.code === '22001') error = handleCastError22001();
-    if(err.parent?.code === '23505') error = handleCastError23505()
+    if(err.parent?.code === '23505') error = handleCastError23505();
+    if (err.parent?.code === '22P02') error = handleCastError22P02();
+    if(err.name === 'TokenExpiredError') error = handleJWTExpiredError();
+    if(err.name === 'JsonWebTokenError') error = handleJWTError();
 
     sendErrorProd(error, res)
   }
